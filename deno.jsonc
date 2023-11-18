@@ -1,0 +1,5 @@
+{
+  "tasks": {
+    "chat_bot": "deno run --env -A --unsafely-ignore-certificate-errors=home.heimskr.gay ./chat_bot/mod.ts"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "version": "3",
+  "remote": {
+    "https://deno.land/x/lz4@v0.1.2/mod.ts": "4decfc1a3569d03fd1813bd39128b71c8f082850fe98ecfdde20025772916582",
+    "https://deno.land/x/lz4@v0.1.2/wasm.js": "b9c65605327ba273f0c76a6dc596ec534d4cda0f0225d7a94ebc606782319e46"
+  }
+}
