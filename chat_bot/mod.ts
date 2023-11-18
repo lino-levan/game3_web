@@ -18,6 +18,23 @@ connection.addEventListener("packet", async (event) => {
     await connection.write(login(GAME3_NAME, data.token));
   }
   if (type === "chatMessageSent") {
+    const playerId = data.playerId.toString();
+    if (data.message.startsWith("!link ")) {
+      const discordId = data.message.slice(6);
+      const req = await fetch(`${DISCORD_BASE_URL}/users/${discordId}`, {
+        headers: {
+          "Authorization": `Bot ${BOT_TOKEN}`,
+        },
+      });
+      const res = await req.json();
+      console.log(res);
+      localStorage.setItem(playerId, JSON.stringify(res));
+      return;
+    }
+
+    const username =
+      JSON.parse(localStorage.getItem(playerId) ?? "{}").username ?? playerId;
+
     const req = await fetch(
       `${DISCORD_BASE_URL}/channels/${CHANNEL_ID}/messages`,
       {
@@ -27,7 +44,7 @@ connection.addEventListener("packet", async (event) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          content: data.message,
+          content: `${username}: ${data.message}`,
         }),
       },
     );

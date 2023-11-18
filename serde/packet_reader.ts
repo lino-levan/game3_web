@@ -183,7 +183,7 @@ export class PacketReader {
           items: this.#read(this.#buffer.getUint8(pointer.value++), pointer),
         };
 
-      case 0xe1: // Fluid Stack
+      case 0xe2: // Fluid Stack
         return {
           id: this.#read(this.#buffer.getUint8(pointer.value++), pointer),
           amount: this.#read(this.#buffer.getUint8(pointer.value++), pointer),
