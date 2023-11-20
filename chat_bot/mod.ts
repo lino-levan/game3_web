@@ -27,7 +27,6 @@ connection.addEventListener("packet", async (event) => {
         },
       });
       const res = await req.json();
-      console.log(res);
       localStorage.setItem(playerId, JSON.stringify(res));
       return;
     }
