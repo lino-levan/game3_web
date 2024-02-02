@@ -248,6 +248,56 @@ export function openTextTab(arr: any) {
   };
 }
 
+export function tileSetResponse(arr: any) {
+  return {
+    realmId: arr[0] as number,
+    tilesetData: arr[1] as Record<number, string>,
+  };
+}
+
+export function recipeList(arr: any) {
+  return {
+    recipeTypeIdentifier: arr[0] as string,
+    recipeJsons: arr[1] as string[],
+  };
+}
+
+export function livingEntityHealthChanged(arr: any) {
+  return {
+    entityGlobalId: arr[0] as bigint,
+    newHealth: arr[1] as number,
+  };
+}
+
+export function villageUpdate(arr: any) {
+  return {
+    villageId: arr[0] as bigint,
+    realmId: arr[1] as number,
+    chunkX: arr[2] as number,
+    chunkY: arr[3] as number,
+    positionX: arr[4] as number,
+    positionY: arr[5] as number,
+    villageName: arr[6] as string,
+    availableLabor: arr[7] as number,
+    greedFactor: arr[8] as number,
+    resources: arr[9] as Record<string, number>,
+  };
+}
+
+export function openVillageTrade(arr: any) {
+  return {
+    villageId: arr[0] as bigint,
+    removeOnMove: !!arr[1],
+  };
+}
+
+export function entityMoneyChanged(arr: any) {
+  return {
+    globalId: arr[0] as bigint,
+    moneyCount: arr[1] as bigint,
+  };
+}
+
 export const packetIdToName = {
   1: "protocolVersion",
   2: "tileEntity",
@@ -276,6 +326,12 @@ export const packetIdToName = {
   46: "entityChangingRealms",
   47: "chatMessageSent",
   48: "openTextTab",
+  52: "tileSetResponse",
+  53: "recipeList",
+  54: "livingEntityHealthChanged",
+  57: "villageUpdate",
+  58: "openVillageTrade",
+  60: "entityMoneyChanged",
 } as const;
 
 export const packetIdToDecoder = {
@@ -306,4 +362,10 @@ export const packetIdToDecoder = {
   entityChangingRealms,
   chatMessageSent,
   openTextTab,
+  tileSetResponse,
+  recipeList,
+  livingEntityHealthChanged,
+  villageUpdate,
+  openVillageTrade,
+  entityMoneyChanged,
 } as const;
